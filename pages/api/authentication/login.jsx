@@ -31,14 +31,13 @@ export default async function handler(req, res) {
       }
 
       // Create a JWT with the user's information as the payload
-        const token = jwt.sign({ 
-            userId: user._id, 
-            username: user.username, 
-        }, 'secret');
+      const token = jwt.sign({
+        userId: user._id,
+        username: user.username,
+      }, 'secret');
 
-        res.json({ token });
-      // Respond with a success message
-      res.status(200).json({ message: 'Login successful' });
+      // Respond with the token
+      res.json({ token });
     } catch (error) {
       console.error('Error during login:', error);
       // Respond with an error message
