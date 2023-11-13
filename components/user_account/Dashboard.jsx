@@ -25,7 +25,7 @@ const Dashboard = () => {
                 </div>
                 :
                 <div className='max-w-3xl mx-auto'> 
-                    <div className='text-center mt-5 flex gap-5 mb-12'>
+                    <div className='text-center mt-5 flex gap-5 sm:mb-12 px-6 sm:px-0'>
                         <Button href="/register" selected={((router.asPath === '/register' || router.asPath === '/my-account') && true)}>
                             Register
                         </Button>
