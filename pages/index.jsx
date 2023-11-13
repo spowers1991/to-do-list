@@ -28,13 +28,13 @@ const HomePage = () => {
                <li>Search for tasks based on name and tag names</li>
                <li>Total tasks compared to completed tasks</li>
                <li>Toggle to hide competed tasks</li>
-               <li>Collapsable tasks for organisation</li>
+               <li>Collapse tasks for organisation</li>
                <li>Mobile responsive</li>
             </ul>
 
             <ul className='text-lg mt-6 list-disc  list-inside'>
                 <span className='font-bold'>Potential future features:</span>
-                <li>Generate task pages that are unique to each userId based on their tasks array using Next.js</li>
+                <li>Generate task pages that are unique to each userId based on their tasks array</li>
                 <li>Add sub tasks for each task</li>
                 <li>Add a projects array</li>
             </ul>
