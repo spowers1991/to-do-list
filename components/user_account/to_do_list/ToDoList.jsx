@@ -262,7 +262,7 @@ const ToDoList = ({ user, userId }) => {
           Loading tasks...
         </div>
       }
-      {filteredToDoList.length === 0 &&
+      {(filteredToDoList.length && !loading) === 0 &&
       <div className='font-inter text-2xl mt-12 text-center'>
         Add some tasks
       </div>
