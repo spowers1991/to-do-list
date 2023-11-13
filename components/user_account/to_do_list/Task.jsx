@@ -33,14 +33,14 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
   
   return (
     <li className={`font-inter flex flex-col gap-x-3  border-b ${task.completionStatus && 'border-[#43ed90]'} ${(hideCompleted && task.completionStatus)&& 'hidden'}`}>
-      <div class="flex flex-col sm:flex-row w-full gap-3">
+      <div className="flex flex-col sm:flex-row w-full gap-3">
         <div className='flex flex-col w-full'>
-        <span onClick={() => handleCollapseAccordion()} className={`cursor-pointer  py-8 flex w-full gap-x-5 items-center capitalize font-bold min-w-[80px] text-lg sm:text-xl  ${task.completionStatus && 'line-through'}`}>
-          <span>
+        <span onClick={() => handleCollapseAccordion()} className={`cursor-pointer  py-8 flex w-full gap-x-5 items-center capitalize-first font-bold min-w-[80px] text-lg sm:text-xl `}>
+          <span className={`${task.completionStatus && 'line-through'}`}>
             {task.name}
           </span>
-          <div className={`flex ${task?.completionStatus && 'line-through opacity-40'} ${collapseAccordion ? 'block' : 'hidden' } `}> 
-            <span className={`capitalize text-sm  ml-3 ${task.priorityLabel == 'high' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel == 'medium' && 'bg-[orange]'} ${task.priorityLabel === 'low' && 'bg-[#43ed90]'} `}>
+          <div className={`flex ${collapseAccordion ? 'block' : 'hidden' } `}> 
+            <span className={` ${task?.completionStatus && ' opacity-20'} capitalize text-sm  ml-3 ${task.priorityLabel == 'high' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel == 'medium' && 'bg-[orange]'} ${task.priorityLabel === 'low' && 'bg-[#43ed90]'} `}>
                 {task.priorityLabel} 
             </span>
             <span className='flex items-center ext-sm sm:text-base'>
@@ -56,14 +56,14 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
 
         
         <div className={`${collapseAccordion ? 'hidden' : 'block' } `}>
-        <span className={`flex items-center mb-5   ${task.completionStatus && 'line-through opacity-60'}`}>
+        <span className={`flex items-center mb-5 `}>
           Priority:
             <span className={`capitalize text-sm  ml-3 ${task.priorityLabel == 'high' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel == 'medium' && 'bg-[orange]'} ${task.priorityLabel === 'low' && 'bg-[#43ed90]'} `}>
               {task.priorityLabel} 
             </span>
         </span>
         {task?.tags?.length > 0 &&
-          <span className={`flex gap-x-3 items-center  capitalize  break-all mb-5  ${task?.completionStatus && 'line-through opacity-60'}`}>
+          <span className={`flex gap-x-3 items-center  capitalize  break-all mb-5 `}>
             Tags: 
             <span className='flex flex-wrap gap-2'>            
               {task?.tags.map((tag, index) => (

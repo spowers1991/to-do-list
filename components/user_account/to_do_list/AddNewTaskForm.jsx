@@ -35,7 +35,7 @@ const AddNewTaskForm = ({ addTask, submissionSuccess, submissionFailure, pending
     setTags((prevTags) => prevTags.filter((tag) => tag !== tagToRemove));
   };
 
-  const inputClasses = `w-full py-[11px] sm:py-[12px] px-5 sm:text-xs font-[500] tracking-[1px] rounded uppercase text-[11px] bg-[#fff] p-2 border-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black ${pending ? 'border-[#ed9043]' : ''} ${submissionSuccess ? '!border-[#43ed90]' : ''} ${submissionFailure ? '!border-[red]' : ''}`;
+  const inputClasses = `w-full py-[11px] sm:py-[12px] px-5 text-sm font-[500] tracking-[1px] rounded  bg-[#fff] p-2 border-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black ${pending ? 'border-[#ed9043]' : ''} ${submissionSuccess ? '!border-[#43ed90]' : ''} ${submissionFailure ? '!border-[red]' : ''}`;
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-3 my-12 border-b pb-12 sm:pb-14'>
@@ -48,9 +48,9 @@ const AddNewTaskForm = ({ addTask, submissionSuccess, submissionFailure, pending
           Priority:
         </label>
         <select className={inputClasses} value={priority} onChange={(e) => {setPriority(e.target.value); setPriorityLabel(e.target.options[e.target.selectedIndex].label)}} >
-          <option value="1" label="high">High</option>
-          <option value="2" label="medium">Medium</option>
-          <option value="3" label="low">Low</option>
+          <option value="1" label="High">High</option>
+          <option value="2" label="Medium">Medium</option>
+          <option value="3" label="Low">Low</option>
         </select>
 
         <label className='mt-3 font-bold'> 

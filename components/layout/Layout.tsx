@@ -31,7 +31,7 @@ const Layout = ({ children, metadata }: LayoutProps) => {
         <meta httpEquiv="content-language" content = "en" />
         <meta name="google-site-verification" content="xn5gDdTmBFv8xc-84JrKaLI_sR-kkS-Ve73_rY1Kico" />
       </Head>
-      <main className='sm:bg-[#f4f4f4]'>
+      <main className='sm:bg-[#f4f4f4] font-inter'>
         {children}
       </main>
     </>
