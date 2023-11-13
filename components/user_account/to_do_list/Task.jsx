@@ -44,20 +44,22 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
     <li className={`font-inter flex flex-col gap-x-3  border-b ${task.completionStatus && 'border-[#43ed90]'} ${(hideCompleted && task.completionStatus)&& 'hidden'}`}>
       <div className="flex flex-col sm:flex-row w-full gap-3">
         <div className='flex flex-col w-full'>
-        <span onClick={() => handleCollapseAccordion()} className={`cursor-pointer  py-8 flex w-full gap-x-5 items-center capitalize-first font-bold min-w-[80px] text-lg sm:text-xl `}>
-          <span className={`${task.completionStatus && 'line-through'}`}>
-            {task.name}
-          </span>
-          <div className={`flex ${collapseAccordion ? 'block' : 'hidden' } `}> 
-            <span className={` ${task?.completionStatus && ' opacity-20'} capitalize text-sm  ml-3 ${task.priorityLabel == 'high' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel == 'medium' && 'bg-[orange]'} ${task.priorityLabel === 'low' && 'bg-[#43ed90]'} `}>
-                {task.priorityLabel} 
+        <span className='flex items-center'>
+          <span onClick={() => handleCollapseAccordion()} className={`cursor-pointer  py-8 flex flex-wrap gap-3 sm:gap-0 w-full gap-x-5 items-center capitalize-first font-bold min-w-[80px] text-lg sm:text-xl `}>
+            <span className={`${task.completionStatus && 'line-through'}`}>
+              {task.name}
             </span>
-            <span className='flex items-center ext-sm sm:text-base'>
-              <span className={`ml-3  text-sm text-white py-1 px-3 rounded ${task.completionStatus ? 'bg-[#43ed90]' : 'bg-[#ed9043]'}`}>
-                {task.completionStatus ? 'Completed' : 'In progress'}
+            <div className={`flex ${collapseAccordion ? 'block' : 'hidden' } `}> 
+              <span className={` ${task?.completionStatus && ' opacity-20'} capitalize text-sm  sm:ml-8 ${task.priorityLabel == 'high' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel == 'medium' && 'bg-[orange]'} ${task.priorityLabel === 'low' && 'bg-[#43ed90]'} `}>
+                  {task.priorityLabel} 
               </span>
-            </span>
-          </div>
+              <span className='flex items-center ext-sm sm:text-base'>
+                <span className={`ml-3  text-sm text-white py-1 px-3 rounded ${task.completionStatus ? 'bg-[#43ed90]' : 'bg-[#ed9043]'}`}>
+                  {task.completionStatus ? 'Completed' : 'In progress'}
+                </span>
+              </span>
+            </div>
+          </span>
           <span className={`ml-auto ${collapseAccordion ? 'text-[#000]' : 'text-[#434bed]' } ${task.completionStatus && 'text-[#43ed90]'}`}>
             <svg className={`w-5 h-5 sm:w-5 sm:h-5 ${collapseAccordion ? 'rotate-0' : 'rotate-90'}`} fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.568 18.005l-1.414-1.415 4.574-4.59-4.574-4.579 1.414-1.416 5.988 5.995-5.988 6.005z"/></svg>
           </span>
