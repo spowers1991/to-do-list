@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const AddNewTaskForm = ({ addTask, submissionSuccess, submissionFailure, pending, errorMessage  }) => {
+const AddNewTaskForm = ({ addTask, addSuccess, addFailure, addPending, addErrorMessage  }) => {
 
   // State for form input field
   const [name, setname] = useState('');
@@ -16,7 +16,7 @@ const AddNewTaskForm = ({ addTask, submissionSuccess, submissionFailure, pending
       // Reset form fields after a successful API request
       setname('');
       setPriority('2');
-      setPriorityLabel('medium')
+      setPriorityLabel('Medium')
       setTagsInput('');
       setTags([]);
     } catch (error) {
@@ -35,7 +35,7 @@ const AddNewTaskForm = ({ addTask, submissionSuccess, submissionFailure, pending
     setTags((prevTags) => prevTags.filter((tag) => tag !== tagToRemove));
   };
 
-  const inputClasses = `w-full py-[11px] sm:py-[12px] px-5 text-sm font-[500] tracking-[1px] rounded  bg-[#fff] p-2 border-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black ${pending ? 'border-[#ed9043]' : ''} ${submissionSuccess ? '!border-[#43ed90]' : ''} ${submissionFailure ? '!border-[red]' : ''}`;
+  const inputClasses = `w-full py-[11px] sm:py-[12px] px-5 text-sm font-[500] tracking-[1px] rounded  bg-[#fff] p-2 border-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black ${addPending ? 'border-[#ed9043]' : ''} ${addSuccess ? '!border-[#43ed90]' : ''} ${addFailure ? '!border-[red]' : ''}`;
 
   return (
     <form onSubmit={handleSubmit} className='flex flex-col gap-3 my-12 border-b pb-12 sm:pb-14'>
@@ -64,7 +64,7 @@ const AddNewTaskForm = ({ addTask, submissionSuccess, submissionFailure, pending
             onChange={(e) => setTagsInput(e.target.value)}
             placeholder="Add tags"
           />
-          <button type="button" onClick={handleAddTag} className={`!w-[min-content] flex items-center gap-x-3 ${submissionSuccess ? '!bg-[#43ed90] !text-[#000] pointer-events-none' : 'bg-[#434bed]'} ${submissionFailure ? 'bg-[red] pointer-events-none' : 'bg-[#434bed]'} ${pending && 'bg-[#ed9043] hover:bg-[#ed9043] pointer-event-none'} duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
+          <button type="button" onClick={handleAddTag} className={`!w-[min-content] flex items-center gap-x-3 ${addSuccess ? '!bg-[#43ed90] !text-[#000] pointer-events-none' : 'bg-[#434bed]'} ${addFailure ? 'bg-[red] pointer-events-none' : 'bg-[#434bed]'} ${addPending && 'bg-[#ed9043] hover:bg-[#ed9043] pointer-event-none'} duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
             <div className='w-full flex items-center gap-3 sm:gap-x-4'>
                 <span className='ml-auto'>
                   <svg className={`ml-auto w-5 h-5 sm:w-6 sm:h-6 `} fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm-.747 9.25h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75z" fillRule="nonzero"/></svg>
@@ -91,10 +91,10 @@ const AddNewTaskForm = ({ addTask, submissionSuccess, submissionFailure, pending
             </ul>
           </div>
         )}
-        <button type="submit" className={`mt-3 flex gap-x-3 items-center submit-button ${submissionSuccess ? '!bg-[#43ed90] !text-[#000] pointer-events-none' : 'bg-[#434bed]'} ${submissionFailure ? 'bg-[red] pointer-events-none' : 'bg-[#434bed]'} ${pending && 'bg-[#ed9043] hover:bg-[#ed9043] '} duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
-            {!submissionSuccess && !submissionFailure ?
-            pending ?
-            // Pending status
+        <button type="submit" className={`mt-3 flex gap-x-3 items-center submit-button ${addSuccess ? '!bg-[#43ed90] !text-[#000] pointer-events-none' : 'bg-[#434bed]'} ${addFailure ? 'bg-[red] pointer-events-none' : 'bg-[#434bed]'} ${addPending && 'bg-[#ed9043] hover:bg-[#ed9043] '} duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
+            {!addSuccess && !addFailure ?
+            addPending ?
+            // addPending status
                 <div className='w-full flex gap-x-3 items-center '>
                     Adding task
                     <svg className="ml-auto w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.848 12.459c.202.038.202.333.001.372-1.907.361-6.045 1.111-6.547 1.111-.719 0-1.301-.582-1.301-1.301 0-.512.77-5.447 1.125-7.445.034-.192.312-.181.343.014l.985 6.238 5.394 1.011z"/></svg>
@@ -106,7 +106,7 @@ const AddNewTaskForm = ({ addTask, submissionSuccess, submissionFailure, pending
                     <svg className={`ml-auto w-5 h-5 sm:w-6 sm:h-6 `} fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm-.747 9.25h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75z" fillRule="nonzero"/></svg>
                 </div>  
             :
-                submissionSuccess ?
+                addSuccess ?
                 // Message SENT successfully status
                 <div className='w-full flex gap-x-3 items-center '>
                     Task added 
@@ -115,7 +115,7 @@ const AddNewTaskForm = ({ addTask, submissionSuccess, submissionFailure, pending
                 :
                 // Message FAILED successfully status
                 <div className='w-full flex gap-x-3 items-center '>
-                    {errorMessage}
+                    {addErrorMessage}
                     <svg className="ml-auto w-5 h-5" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1 5h2v10h-2v-10zm1 14.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
                 </div>
             }

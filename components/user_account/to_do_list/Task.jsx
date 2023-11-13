@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import UpdateTaskForm from './UpdateTaskForm'
 
-const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSuccess, updateFailure, updatePending, updateErrorMessage, showUpdateForm, showUpdateTaskForm, hideCompleted }) => {
+const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSuccess, updateFailure, updateaddPending, updateErrorMessage, showUpdateForm, showUpdateTaskForm, hideCompleted }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleDelete = async (confirm) => {
@@ -50,7 +50,7 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
               {task.name}
             </span>
             <div className={`flex ${collapseAccordion ? 'block' : 'hidden' } `}> 
-              <span className={` ${task?.completionStatus && ' opacity-20'} capitalize text-sm  lg:ml-8 ${task.priorityLabel == 'high' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel == 'medium' && 'bg-[orange]'} ${task.priorityLabel === 'low' && 'bg-[#43ed90]'} `}>
+              <span className={` ${task?.completionStatus && ' opacity-20'} capitalize text-sm  lg:ml-8 ${task.priorityLabel === 'High' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel === 'Medium' && 'bg-[orange]'} ${task.priorityLabel === 'Low' && 'bg-[#43ed90]'} `}>
                   {task.priorityLabel} 
               </span>
               <span className='flex items-center ext-sm sm:text-base'>
@@ -69,7 +69,7 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
         <div className={`${collapseAccordion ? 'hidden' : 'block' } `}>
         <span className={`flex items-center mb-5 `}>
           Priority:
-            <span className={`capitalize text-sm  ml-3 ${task.priorityLabel == 'high' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel == 'medium' && 'bg-[orange]'} ${task.priorityLabel === 'low' && 'bg-[#43ed90]'} `}>
+            <span className={`capitalize text-sm  ml-3 ${task.priorityLabel === 'High' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel === 'Medium' && 'bg-[orange]'} ${task.priorityLabel === 'Low' && 'bg-[#43ed90]'} `}>
               {task.priorityLabel} 
             </span>
         </span>
@@ -105,7 +105,7 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
           </button>
           <span className={`${task.completionStatus && 'hidden'}`}>
             {(showUpdateForm === task._id) &&
-              <UpdateTaskForm task={task} updateTask={updateTask} updateSuccess={updateSuccess} updateFailure={updateFailure} updatePending={updatePending} updateErrorMessage={updateErrorMessage}  />
+              <UpdateTaskForm task={task} updateTask={updateTask} updateSuccess={updateSuccess} updateFailure={updateFailure} updateaddPending={updateaddPending} updateErrorMessage={updateErrorMessage}  />
             }
           </span>
         <div className={`${showConfirmation ? 'flex flex-row sm:flex-col' : 'flex flex-row '}  sm:flex sm:self-end sm:ml-auto w-full sm:w-1/4 gap-3 mb-8`}>
