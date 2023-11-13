@@ -92,7 +92,7 @@ const UpdateTaskForm = ({ task, updateTask, updateSuccess, updateFailure, update
             <ul className='flex flex-wrap gap-3'>
               {tags.map((tag, index) => (
                 <li key={`${tag}-${index}`} className='py-4'>            
-                  <button type="button" onClick={() => handleRemoveTag(tag)} className={`w-[fit-content] flex items-center gap-x-3 bg-[#9043ed] text-white hover:bg-black duration-150 py-[46px] sm:py-[8px] px-3  rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
+                  <button type="button" onClick={() => handleRemoveTag(tag)} className={`w-[fit-content] flex items-center gap-x-3 bg-[#9043ed] text-white hover:bg-black duration-150 py-[8px] px-3  rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
                     <div className='w-[fit-content] flex items-center gap-2 sm:gap-x-2'>
                         <span className='!text-xs'>{tag}</span>
                         <span className='ml-auto'>
