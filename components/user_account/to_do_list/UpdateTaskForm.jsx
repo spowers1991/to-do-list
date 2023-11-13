@@ -52,7 +52,7 @@ const UpdateTaskForm = ({ task, updateTask, updateSuccess, updateFailure, update
   const inputClasses = `w-full py-[11px] sm:py-[12px] px-5 sm:text-xs font-[500] tracking-[1px] rounded uppercase text-[11px] bg-[#fff] p-2 border-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black ${updatePending ? 'border-[#ed9043]' : ''} ${updateSuccess ? '!border-[#43ed90]' : ''} ${updateFailure ? '!border-[red]' : ''}`;
 
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col gap-3 mb-12'>
+    <form onSubmit={handleSubmit} className='flex flex-col gap-3 mb-8'>
         <label className='mt-3 font-bold'>
           Task Name: 
         </label>
