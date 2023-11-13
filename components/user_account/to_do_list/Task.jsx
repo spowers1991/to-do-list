@@ -29,38 +29,44 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
     <li className={`font-inter flex flex-col gap-x-3 my-3 py-3 border-b ${task.completionStatus && 'border-[#43ed90]'}`}>
       <div class="flex flex-col sm:flex-row w-full gap-3">
       <div className='flex flex-col w-full'>
-      <span className={`capitalize font-bold min-w-[80px] text-base sm:text-xl mb-3 ${task.completionStatus && 'line-through'}`}>
+      <span className={`capitalize font-bold min-w-[80px] text-base sm:text-xl mb-5 ${task.completionStatus && 'line-through'}`}>
         {task.name}
       </span>
-      <span className={`mb-3 text-sm sm:text-base  ${task.completionStatus && 'line-through opacity-60'}`}>
+      <span className={`flex items-center mb-5 text-sm sm:text-base  ${task.completionStatus && 'line-through opacity-60'}`}>
         Priority:
-          <span className={`capitalize font-bold  ml-3 ${task.priorityLabel == 'high' && 'text-[red]'} ${task.priorityLabel == 'medium' && 'text-[orange]'} ${task.priorityLabel === 'low' && 'text-[#43ed90]'} `}>
+          <span className={`capitalize text-sm  ml-3 ${task.priorityLabel == 'high' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel == 'medium' && 'bg-[orange]'} ${task.priorityLabel === 'low' && 'bg-[#43ed90]'} `}>
             {task.priorityLabel} 
           </span>
       </span>
       {task?.tags?.length > 0 &&
-        <span className={`text-sm sm:text-base capitalize  break-all mb-3  ${task.completionStatus && 'line-through opacity-60'}`}>
+        <span className={`flex gap-x-3 items-center text-sm sm:text-base capitalize  break-all mb-5  ${task?.completionStatus && 'line-through opacity-60'}`}>
           Tags: 
-          <span className='ml-3 max-w-[150px]'>
-            {task?.tags.join(', ')} 
+          <span className='flex flex-wrap gap-2'>            
+            {task?.tags.map((tag) => (
+              <span className='text-sm rounded py-1 px-3 bg-[#9043ed] text-white'>
+                {tag}
+              </span>
+            ))} 
           </span>
         </span>
       }
-      <span className='text-sm sm:text-base'>
+      <span className='flex items-center ext-sm sm:text-base'>
         Status:
-        <span className='ml-3 font-bold'>
+        <span className={`ml-3  text-sm text-white py-1 px-3 rounded ${task.completionStatus ? 'bg-[#43ed90]' : 'bg-[#ed9043]'}`}>
           {task.completionStatus ? 'Completed' : 'In progress'}
         </span>
       </span>
-        <button type="button" onClick={() => showUpdateTaskForm(task._id)} className={`${task.completionStatus === 1 && 'pointer-events-none bg-[#43ed90]'} my-8 w-[fit-content] flex items-center gap-x-3 bg-[#434bed]  text-white hover:bg-black duration-150 py-[12px] sm:py-[12px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
+        <button type="button" onClick={() => showUpdateTaskForm(task._id)} className={`${task.completionStatus === 1 && 'pointer-events-none bg-[#43ed90] line-through'} my-8 w-[fit-content] flex items-center gap-x-3 bg-[#434bed]  text-white hover:bg-black duration-150 py-[12px] sm:py-[12px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
             <div className='w-[fit-content] flex items-center gap-3 sm:gap-x-4'>
             {showUpdateForm === task._id
               ? 'Hide form'
-              : task.completionStatus === 1
-                ? 'Completed'
-                : 'Edit task'
+              : 
+                'Edit task'
             }
             </div>
+            <span className='ml-auto'>
+              <svg className={`w-4 h-4 sm:w-4 sm:h-4`}  fill="currentColor" clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m4.481 15.659c-1.334 3.916-1.48 4.232-1.48 4.587 0 .528.46.749.749.749.352 0 .668-.137 4.574-1.492zm1.06-1.061 3.846 3.846 11.321-11.311c.195-.195.293-.45.293-.707 0-.255-.098-.51-.293-.706-.692-.691-1.742-1.74-2.435-2.432-.195-.195-.451-.293-.707-.293-.254 0-.51.098-.706.293z" fillRule="nonzero"/></svg>
+            </span>
         </button>
         {(showUpdateForm === task._id) &&
           <UpdateTaskForm task={task} updateTask={updateTask} updateSuccess={updateSuccess} updateFailure={updateFailure} updatePending={updatePending} updateErrorMessage={updateErrorMessage}  />

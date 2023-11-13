@@ -65,6 +65,9 @@ const ToDoList = ({ user, userId }) => {
     // Toggle the sortOrder for the next click
     setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
   };
+  const handleResetButtonClick = () => {
+    setSearchQuery('');
+  };
 
 
   // Api request to ADD a new task
@@ -214,14 +217,17 @@ const ToDoList = ({ user, userId }) => {
           <button onClick={handleReorderClick} className={`bg-[#434bed] flex gap-x-3 items-center submit-button hover:bg-black duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
             Reorder by Priority ({sortOrder === 'asc' ? 'Ascending' : sortOrder === 'desc' ? 'Descending' : 'Unordered'})
           </button>
+          <div className='flex '>
             <input
-            type="text"
-            id="search"
-            value={searchQuery}
-            onChange={handleSearchInputChange}
-            placeholder="Enter search query"
-            className="px-6 uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] bg-[#fff] w-[fit-content] rounded block  p-2  border-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] ${pending && 'border-[#ed9043]'} placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black"
-          />
+              type="text"
+              id="search"
+              value={searchQuery}
+              onChange={handleSearchInputChange}
+              placeholder="Enter search query"
+              className="px-6 uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] bg-[#fff] w-[fit-content] rounded block  p-2  border-t-2 border-l-2 border-b-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] ${pending && 'border-[#ed9043]'} placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black"
+            />
+            <button className={`bg-[#434bed] relative left-[-2px] rounded-r px-3 py-1 text-white uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`} onClick={handleResetButtonClick}>Reset</button>
+          </div>
         </div>
         <div className='flex flex-col sm:ml-auto gap-x-3 gap-y-1 text-sm sm:text-xl mt-12 sm:mt-0 w-full sm:w-auto'>
           <div className='font-inter '>
