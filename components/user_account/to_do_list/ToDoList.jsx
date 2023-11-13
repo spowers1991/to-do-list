@@ -235,10 +235,10 @@ const ToDoList = ({ user, userId }) => {
               placeholder="Enter search query"
               className="px-6 uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] bg-[#fff] w-[fit-content] rounded block  p-2  border-t-2 border-l-2 border-b-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] ${pending && 'border-[#ed9043]'} placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black"
             />
-            <button className={`bg-[#434bed] relative left-[-2px] rounded-r px-3 py-1 text-white uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`} onClick={handleResetButtonClick}>Reset</button>
+            <button className={`bg-[#434bed] relative left-[-2px] rounded-r px-5 py-1 text-white uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`} onClick={handleResetButtonClick}>Reset</button>
           </div>
         </div>
-        <div className='flex flex-col sm:ml-auto gap-x-3 gap-y-1 text-sm sm:text-xl mt-12 sm:mt-0 w-full sm:w-auto'>
+        <div className='flex flex-col sm:ml-auto gap-x-3 gap-y-1 text-base sm:text-xl mt-12 sm:mt-0 w-full sm:w-auto'>
           <div className='font-inter '>
             <span className='font-bold mr-2'>
               Completed tasks: 
@@ -279,7 +279,7 @@ const ToDoList = ({ user, userId }) => {
         </div>
       }
       {(filteredToDoList.length === 0 && !loading) &&
-      <div className='font-inter text-2xl mt-12 text-center'>
+      <div className='font-inter text-lg sm:text-2xl mt-12 text-center'>
         Add some tasks
       </div>
       }
