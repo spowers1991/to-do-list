@@ -45,12 +45,12 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
       <div className="flex flex-col sm:flex-row w-full gap-3">
         <div className='flex flex-col w-full'>
         <span className='flex items-center'>
-          <span onClick={() => handleCollapseAccordion()} className={`cursor-pointer  py-8 flex flex-wrap gap-3 sm:gap-0 w-full gap-x-5 items-center capitalize-first font-bold min-w-[80px] text-lg sm:text-xl `}>
+          <span onClick={() => handleCollapseAccordion()} className={`cursor-pointer  py-8 flex flex-wrap gap-3 lg:gap-0 w-full gap-x-5 items-center capitalize-first font-bold min-w-[80px] text-lg sm:text-xl `}>
             <span className={`${task.completionStatus && 'line-through'}`}>
               {task.name}
             </span>
             <div className={`flex ${collapseAccordion ? 'block' : 'hidden' } `}> 
-              <span className={` ${task?.completionStatus && ' opacity-20'} capitalize text-sm  sm:ml-8 ${task.priorityLabel == 'high' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel == 'medium' && 'bg-[orange]'} ${task.priorityLabel === 'low' && 'bg-[#43ed90]'} `}>
+              <span className={` ${task?.completionStatus && ' opacity-20'} capitalize text-sm  lg:ml-8 ${task.priorityLabel == 'high' && 'bg-[red]'} py-1 px-3 rounded text-white ${task.priorityLabel == 'medium' && 'bg-[orange]'} ${task.priorityLabel === 'low' && 'bg-[#43ed90]'} `}>
                   {task.priorityLabel} 
               </span>
               <span className='flex items-center ext-sm sm:text-base'>
