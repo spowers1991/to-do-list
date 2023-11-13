@@ -24,7 +24,7 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
         console.error('Error updating task:', error);
       }
   };
-console.log(task)
+  
   return (
     <li className={`font-inter flex flex-col gap-x-3 my-3 py-3 border-b ${task.completionStatus && 'border-[#43ed90]'}`}>
       <div class="flex flex-col sm:flex-row w-full gap-3">
