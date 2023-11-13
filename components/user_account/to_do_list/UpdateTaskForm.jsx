@@ -78,7 +78,7 @@ const UpdateTaskForm = ({ task, updateTask, updateSuccess, updateFailure, update
             onChange={(e) => setTagsInput(e.target.value)}
             placeholder="Add tags"
           />
-          <button type="button" onClick={handleAddTag} className={`!w-[min-content] flex items-center gap-x-3 ${updateSuccess ? '!bg-[#43ed90] !text-[#000] pointer-events-none' : 'bg-[#434bed]'} ${updateFailure ? 'bg-[red] pointer-events-none' : 'bg-[#434bed]'} ${updatePending && 'bg-[#ed9043] hover:bg-[#ed9043] '} hover:bg-black duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
+          <button type="button" onClick={handleAddTag} className={`!w-[min-content] flex items-center gap-x-3 ${updateSuccess ? '!bg-[#43ed90] !text-[#000] pointer-events-none' : 'bg-[#434bed]'} ${updateFailure ? 'bg-[red] pointer-events-none' : 'bg-[#434bed]'} ${updatePending && 'bg-[#ed9043] hover:bg-[#ed9043] '}  duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
             <div className='w-full flex items-center gap-3 sm:gap-x-4'>
                 <span className='ml-auto'>
                   <svg className={`ml-auto w-5 h-5 sm:w-6 sm:h-6 `} fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm-.747 9.25h-3.5c-.414 0-.75.336-.75.75s.336.75.75.75h3.5v3.5c0 .414.336.75.75.75s.75-.336.75-.75v-3.5h3.5c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-3.5v-3.5c0-.414-.336-.75-.75-.75s-.75.336-.75.75z" fillRule="nonzero"/></svg>
@@ -92,7 +92,7 @@ const UpdateTaskForm = ({ task, updateTask, updateSuccess, updateFailure, update
             <ul className='flex flex-wrap gap-3 py-4'>
               {tags.map((tag, index) => (
                 <li key={`${tag}-${index}`}>            
-                  <button type="button" onClick={() => handleRemoveTag(tag)} className={`w-[fit-content] flex items-center gap-x-3 bg-[#9043ed] text-white hover:bg-black duration-150 py-[8px] px-3  rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
+                  <button type="button" onClick={() => handleRemoveTag(tag)} className={`w-[fit-content] flex items-center gap-x-3 bg-[#9043ed] text-white duration-150 py-[8px] px-3  rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
                     <div className='w-[fit-content] flex items-center gap-2 sm:gap-x-2'>
                         <span className='!text-xs'>{tag}</span>
                         <span className='ml-auto'>
@@ -105,7 +105,7 @@ const UpdateTaskForm = ({ task, updateTask, updateSuccess, updateFailure, update
             </ul>
           </div>
         )}
-        <button type="submit" className={`mt-3 flex gap-x-3 items-center submit-button ${updateSuccess ? '!bg-[#43ed90] !text-[#000] pointer-events-none' : 'bg-[#434bed]'} ${updateFailure ? 'bg-[red] pointer-events-none' : 'bg-[#434bed]'} ${updatePending && 'bg-[#ed9043] hover:bg-[#ed9043] '} hover:bg-black duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
+        <button type="submit" className={`mt-3 flex gap-x-3 items-center submit-button ${updateSuccess ? '!bg-[#43ed90] !text-[#000] pointer-events-none' : 'bg-[#434bed]'} ${updateFailure ? 'bg-[red] pointer-events-none' : 'bg-[#434bed]'} ${updatePending && 'bg-[#ed9043] hover:bg-[#ed9043] '}  duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
             {!updateSuccess && !updateFailure ?
             updatePending ?
             // updatePending status

@@ -28,7 +28,7 @@ const Button = ({ href, color, children, className, newTab, selected }) => {
 
     return (
         href && 
-            <Link href={href} target={newTab === true ? '_blank' : null} className={`${className} flex items-center gap-x-3 ${bgColor} ${selected && '!bg-black'} hover:bg-black duration-150 py-[11px] sm:py-[12px] px-5  rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
+            <Link href={href} target={newTab === true ? '_blank' : null} className={`${className} flex items-center gap-x-3 ${bgColor} ${selected && '!bg-black'} duration-150 py-[11px] sm:py-[12px] px-5  rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
                 <div className='flex items-center gap-3 sm:gap-x-4'>
                     {children} 
                     {svgIcon && svgIcon}

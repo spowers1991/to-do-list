@@ -56,7 +56,7 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
           {task.completionStatus ? 'Completed' : 'In progress'}
         </span>
       </span>
-        <button type="button" onClick={() => showUpdateTaskForm(task._id)} className={`${task.completionStatus && 'pointer-events-none bg-[#43ed90] line-through'} my-8 w-[fit-content] flex items-center gap-x-3 bg-[#434bed]  text-white hover:bg-black duration-150 py-[12px] sm:py-[12px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
+        <button type="button" onClick={() => showUpdateTaskForm(task._id)} className={`${task.completionStatus && 'pointer-events-none bg-[#43ed90] line-through'} my-8 w-[fit-content] flex items-center gap-x-3 bg-[#434bed]  text-white duration-150 py-[12px] sm:py-[12px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
             <div className='w-[fit-content] flex items-center gap-3 sm:gap-x-4'>
             {showUpdateForm === task._id
               ? 'Hide form'
@@ -73,7 +73,7 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
         }
       </div>
       <div className={`${showConfirmation ? 'flex flex-row sm:flex-col' : 'flex flex-row '}  sm:flex sm:self-end sm:ml-auto w-full sm:w-1/4 gap-3 mb-8`}>
-      <button type="button" onClick={() => handleCompletionStatus(true)} className={`self-end sm:ml-auto w-1/2 sm:w-[fit-content] flex items-center gap-x-3 ${task.completionStatus ? 'bg-[#43ed90]' : 'bg-[#434bed]'} text-white hover:bg-black duration-150 py-[13px] sm:py-[14px] px-[20px] sm:px-[22px] rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
+      <button type="button" onClick={() => handleCompletionStatus(true)} className={`self-end sm:ml-auto w-1/2 sm:w-[fit-content] flex items-center gap-x-3 ${task.completionStatus ? 'bg-[#43ed90]' : 'bg-[#434bed]'} text-white duration-150 py-[13px] sm:py-[14px] px-[20px] sm:px-[22px] rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
             <div className='w-full sm:w-[fit-content] flex items-center gap-3 sm:gap-x-4'>
                 <span className='sm:hidden'>
                     Complete
@@ -87,12 +87,12 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
         <div className='flex flex-col gap-3'>
           <p className='text-right'>Delete this task?</p>
           <div className='flex gap-3 ml-auto w-[fit-content]'>
-            <button type="button" onClick={() => handleDelete(true)} className={`self-end sm:self-end w-[fit-content] flex items-center gap-x-3 bg-[red] text-white hover:bg-black duration-150 py-[13px] sm:py-[16px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
+            <button type="button" onClick={() => handleDelete(true)} className={`self-end sm:self-end w-[fit-content] flex items-center gap-x-3 bg-[red] text-white duration-150 py-[13px] sm:py-[16px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
                 <div className='w-[fit-content] flex items-center gap-3 sm:gap-x-4'>
                     Yes
                 </div>
             </button>
-            <button type="button" onClick={() => handleDelete(false)} className={`self-end w-[fit-content] flex items-center gap-x-3 bg-[#434bed]  text-white hover:bg-black duration-150 py-[13px] sm:py-[16px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
+            <button type="button" onClick={() => handleDelete(false)} className={`self-end w-[fit-content] flex items-center gap-x-3 bg-[#434bed]  text-white duration-150 py-[13px] sm:py-[16px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
                 <div className='w-[fit-content] flex items-center gap-3 sm:gap-x-4'>
                     No
                 </div>
@@ -100,7 +100,7 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
           </div>
         </div>
       ) : (
-        <button type="button" onClick={() => setShowConfirmation(true)} className={`self-end sm:self-auto w-1/2 sm:w-[fit-content] flex items-center gap-x-3 bg-[red] text-white hover:bg-black duration-150 py-[11px] sm:py-[12px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
+        <button type="button" onClick={() => setShowConfirmation(true)} className={`self-end sm:self-auto w-1/2 sm:w-[fit-content] flex items-center gap-x-3 bg-[red] text-white duration-150 py-[11px] sm:py-[12px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
             <div className='w-full sm:w-[fit-content] flex items-center gap-3 sm:gap-x-4'>
                 <span className='sm:hidden'>
                   Delete

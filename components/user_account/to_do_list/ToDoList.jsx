@@ -220,10 +220,10 @@ const ToDoList = ({ user, userId }) => {
       <AddNewTaskForm addTask={addTask} submissionSuccess={submissionSuccess} submissionFailure={submissionFailure} pending={pending} errorMessage={errorMessage}/>
       <div className="flex flex-col sm:flex-row mb-6 items-center">
         <div className='flex flex-wrap gap-3 '>
-          <button onClick={handleReorderClick} className={`bg-[#434bed] flex gap-x-3 items-center submit-button hover:bg-black duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
+          <button onClick={handleReorderClick} className={`bg-[#434bed] flex gap-x-3 items-center submit-button duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
             Reorder by Priority ({sortOrder === 'asc' ? 'Ascending' : sortOrder === 'desc' ? 'Descending' : 'Unordered'})
           </button>
-          <button onClick={handleHideCompletedTasks} className={`bg-[#434bed] flex gap-x-3 items-center submit-button hover:bg-black duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
+          <button onClick={handleHideCompletedTasks} className={`bg-[#434bed] flex gap-x-3 items-center submit-button duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
             {hideCompleted ? 'Show completed tasks' : 'Hide completed tasks'}
           </button>
           <div className='flex '>
