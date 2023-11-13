@@ -223,7 +223,7 @@ const ToDoList = ({ user, userId }) => {
           <button onClick={handleReorderClick} className={`bg-[#434bed] flex gap-x-3 items-center submit-button duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
             Reorder by Priority ({sortOrder === 'asc' ? 'Ascending' : sortOrder === 'desc' ? 'Descending' : 'Unordered'})
             <span>
-              <svg className={`w-5 h-5 sm:w-5 sm:h-5 ${sortOrder === 'asc' && 'rotate-180'} ${sortOrder === 'desc' && 'rotate-0'}  ${sortOrder === 'unordered' && '-rotate-90'}`} fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 12c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12zm-18.005-1.568l1.415-1.414 4.59 4.574 4.579-4.574 1.416 1.414-5.995 5.988-6.005-5.988z"></path></svg>
+              <svg className={`w-[1.1rem]  h-[1.1rem]  sm:w-[1.1rem]  sm:h-[1.1rem] ${sortOrder === 'asc' && 'rotate-180'} ${sortOrder === 'desc' && 'rotate-0'}  ${sortOrder === 'unordered' && '-rotate-90'}`} fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 12c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12zm-18.005-1.568l1.415-1.414 4.59 4.574 4.579-4.574 1.416 1.414-5.995 5.988-6.005-5.988z"></path></svg>
             </span>
           </button>
           <button onClick={handleHideCompletedTasks} className={`bg-[#434bed] flex gap-x-3 items-center submit-button duration-150 py-[0.58rem] px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
@@ -236,7 +236,7 @@ const ToDoList = ({ user, userId }) => {
               }
               </span>
           </button>
-          <div className='flex '>
+          <div className='flex'>
             <input
               type="text"
               id="search"

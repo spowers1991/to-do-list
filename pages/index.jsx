@@ -34,7 +34,7 @@ const HomePage = () => {
 
             <ul className='text-lg mt-6 list-disc  list-inside'>
                 <span className='font-bold'>Potential future features:</span>
-                <li>Generate pages that are unique to each userId and their task array using Next.js</li>
+                <li>Generate task pages that are unique to each userId based on their tasks array using Next.js</li>
                 <li>Add sub tasks for each task</li>
                 <li>Add a projects array</li>
             </ul>
