@@ -220,13 +220,13 @@ const ToDoList = ({ user, userId }) => {
       <AddNewTaskForm addTask={addTask} submissionSuccess={submissionSuccess} submissionFailure={submissionFailure} pending={pending} errorMessage={errorMessage}/>
       <div className="flex flex-col sm:flex-row mb-6 items-center">
         <div className='flex flex-wrap gap-3 '>
-          <button onClick={handleReorderClick} className={`bg-[#434bed] flex gap-x-3 items-center submit-button duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
+          <button onClick={handleReorderClick} className={`bg-[#434bed] flex gap-x-3 items-center submit-button duration-150  py-[0.8rem] sm:py-[0.85rem] px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
             Reorder by Priority ({sortOrder === 'asc' ? 'Ascending' : sortOrder === 'desc' ? 'Descending' : 'Unordered'})
             <span>
               <svg className={`w-[1.1rem]  h-[1.1rem]  sm:w-[1.1rem]  sm:h-[1.1rem] ${sortOrder === 'asc' && 'rotate-180'} ${sortOrder === 'desc' && 'rotate-0'}  ${sortOrder === 'unordered' && '-rotate-90'}`} fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 12c0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12 12-5.373 12-12zm-18.005-1.568l1.415-1.414 4.59 4.574 4.579-4.574 1.416 1.414-5.995 5.988-6.005-5.988z"></path></svg>
             </span>
           </button>
-          <button onClick={handleHideCompletedTasks} className={`bg-[#434bed] flex gap-x-3 items-center submit-button duration-150 py-[0.58rem] px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
+          <button onClick={handleHideCompletedTasks} className={`bg-[#434bed] flex gap-x-3 items-center submit-button duration-150 py-[0.55rem] sm:py-[0.69rem] px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
             {hideCompleted ? 'Show completed tasks' : 'Hide completed tasks'}
             <span>
               {hideCompleted ?
@@ -243,7 +243,7 @@ const ToDoList = ({ user, userId }) => {
               value={searchQuery}
               onChange={handleSearchInputChange}
               placeholder="Enter search query"
-              className="px-6 text-sm font-[500] tracking-[1px] bg-[#fff] w-[fit-content] rounded block  p-2  border-t-2 border-l-2 border-b-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] ${pending && 'border-[#ed9043]'} placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black"
+              className="px-6 text-sm font-[500] tracking-[1px] bg-[#fff] w-[fit-content] rounded block py-[0.56rem] sm:py-[0.69rem]  border-t-2 border-l-2 border-b-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] ${pending && 'border-[#ed9043]'} placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black"
             />
             <button className={`bg-[#434bed] relative left-[-2px] rounded-r px-5 py-1 text-white uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`} onClick={handleResetButtonClick}>Reset</button>
           </div>
@@ -290,7 +290,7 @@ const ToDoList = ({ user, userId }) => {
       }
       {(filteredToDoList.length === 0 && !loading) &&
       <div className='font-inter text-lg sm:text-2xl mt-12 text-center'>
-        Add some tasks
+        No tasks found...
       </div>
       }
     </div>
