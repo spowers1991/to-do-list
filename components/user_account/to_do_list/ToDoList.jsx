@@ -206,6 +206,12 @@ const ToDoList = ({ user, userId }) => {
     setSearchQuery(event.target.value);
   };
 
+  // Hide completed tasks 
+  const [hideCompleted, setHideCompleted] = useState(false);
+  const handleHideCompletedTasks = () => {
+    setHideCompleted((prevValue) => !prevValue);
+  };
+
   return (
     <div className=' sm:bg-white sm:p-12 rounded'>
       <Heading size="h3">
@@ -216,6 +222,9 @@ const ToDoList = ({ user, userId }) => {
         <div className='flex flex-wrap gap-3 '>
           <button onClick={handleReorderClick} className={`bg-[#434bed] flex gap-x-3 items-center submit-button hover:bg-black duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
             Reorder by Priority ({sortOrder === 'asc' ? 'Ascending' : sortOrder === 'desc' ? 'Descending' : 'Unordered'})
+          </button>
+          <button onClick={handleHideCompletedTasks} className={`bg-[#434bed] flex gap-x-3 items-center submit-button hover:bg-black duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
+            {hideCompleted ? 'Show completed tasks' : 'Hide completed tasks'}
           </button>
           <div className='flex '>
             <input
@@ -260,6 +269,7 @@ const ToDoList = ({ user, userId }) => {
               updateErrorMessage={updateErrorMessage}
               showUpdateForm={showUpdateForm}
               showUpdateTaskForm={showUpdateTaskForm}
+              hideCompleted={hideCompleted}
             />
           ))}
         </ul>

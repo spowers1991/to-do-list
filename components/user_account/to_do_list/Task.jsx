@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import UpdateTaskForm from './UpdateTaskForm'
 
-const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSuccess, updateFailure, updatePending, updateErrorMessage, showUpdateForm, showUpdateTaskForm }) => {
+const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSuccess, updateFailure, updatePending, updateErrorMessage, showUpdateForm, showUpdateTaskForm, hideCompleted }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleDelete = async (confirm) => {
@@ -26,7 +26,7 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
   };
   
   return (
-    <li className={`font-inter flex flex-col gap-x-3 my-3 py-3 border-b ${task.completionStatus && 'border-[#43ed90]'}`}>
+    <li className={`font-inter flex flex-col gap-x-3 my-3 py-3 border-b ${task.completionStatus && 'border-[#43ed90]'} ${(hideCompleted && task.completionStatus)&& 'hidden'}`}>
       <div class="flex flex-col sm:flex-row w-full gap-3">
       <div className='flex flex-col w-full'>
       <span className={`capitalize font-bold min-w-[80px] text-base sm:text-xl mb-5 ${task.completionStatus && 'line-through'}`}>
