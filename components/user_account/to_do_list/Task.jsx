@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import UpdateTaskForm from './UpdateTaskForm'
 
-const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSuccess, updateFailure, updateaddPending, updateErrorMessage, showUpdateForm, showUpdateTaskForm, hideCompleted }) => {
+const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSuccess, updateFailure, updateaddPending, updateErrorMessage, showUpdateForm, showUpdateTaskForm, setShowUpdateForm, hideCompleted }) => {
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleDelete = async (confirm) => {
@@ -29,6 +29,8 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
   const [collapseAccordion, setCollapseAccordion] = useState(true);
   const handleCollapseAccordion = () => {
     setCollapseAccordion((prevValue) => !prevValue);
+    showUpdateForm === task._id &&
+    setShowUpdateForm('')
   };
 
   // useEffect to set collapseAccordion when the component mounts

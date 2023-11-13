@@ -214,6 +214,7 @@ const ToDoList = ({ user, userId }) => {
               showUpdateForm={showUpdateForm}
               showUpdateTaskForm={showUpdateTaskForm}
               hideCompleted={hideCompleted}
+              setShowUpdateForm={setShowUpdateForm}
             />
           ))}
         </ul>
