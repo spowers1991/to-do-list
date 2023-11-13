@@ -42,8 +42,8 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
         <span className={`flex gap-x-3 items-center text-sm sm:text-base capitalize  break-all mb-5  ${task?.completionStatus && 'line-through opacity-60'}`}>
           Tags: 
           <span className='flex flex-wrap gap-2'>            
-            {task?.tags.map((tag) => (
-              <span className='text-sm rounded py-1 px-3 bg-[#9043ed] text-white'>
+            {task?.tags.map((tag, index) => (
+              <span key={index} className='text-sm rounded py-1 px-3 bg-[#9043ed] text-white'>
                 {tag}
               </span>
             ))} 
