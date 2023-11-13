@@ -1,7 +1,56 @@
-const Filters = ({handleReorderClick, sortOrder, hideCompleted, handleHideCompletedTasks, searchQuery, handleSearchInputChange, handleResetButtonClick}) => {
-    
-    return (
-        <div className='flex flex-wrap gap-3 '>
+import { useState, useEffect } from 'react';
+
+const Filters = ({ hideCompleted, handleHideCompletedTasks, toDoList, setToDoList, setFilteredToDoList }) => {
+ 
+  // State to track the sorting order
+  const [sortOrder, setSortOrder] = useState('unordered'); // 'asc' or 'desc'
+
+  // Function to handle the reorder button click
+  const handleReorderClick = () => {
+    const sortedList = [...toDoList];
+
+    // Sort the list based on priority
+    sortedList.sort((taskA, taskB) => {
+      if (sortOrder === 'asc') {
+        return taskA.priority.localeCompare(taskB.priority);
+      } else {
+        return taskB.priority.localeCompare(taskA.priority);
+      }
+    });
+
+    // Update the state with the sorted list
+    setToDoList(sortedList);
+
+    // Toggle the sortOrder for the next click
+    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+  };
+ 
+  // State for search query
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Function to handle search input change
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // Effect to update the filtered to-do list when the search query changes
+  useEffect(() => {
+    setFilteredToDoList(
+      toDoList.filter(
+        (task) =>
+          task.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          task.priorityLabel.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          task.tags?.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+      )
+    );
+  }, [searchQuery, toDoList, setFilteredToDoList]);
+
+  const handleResetButtonClick = () => {
+    setSearchQuery('');
+  };
+
+  return (
+    <div className='flex flex-wrap gap-3 '>
           <button onClick={handleReorderClick} className={`w-full sm:w-auto bg-[#434bed] flex gap-x-3 items-center submit-button duration-150  py-[0.8rem] sm:py-[0.85rem] px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center`}>
             Reorder by Priority ({sortOrder === 'asc' ? 'Ascending' : sortOrder === 'desc' ? 'Descending' : 'Unordered'})
             <span className='ml-auto'>
@@ -25,7 +74,7 @@ const Filters = ({handleReorderClick, sortOrder, hideCompleted, handleHideComple
               value={searchQuery}
               onChange={handleSearchInputChange}
               placeholder="Enter search query"
-              className="w-full px-6 text-sm font-[500] tracking-[1px] bg-[#fff] sm:w-[fit-content] rounded block py-[0.56rem] sm:py-[0.69rem]  border-t-2 border-l-2 border-b-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] ${addPending && 'border-[#ed9043]'} placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black"
+              className="w-full px-6 text-sm font-[500] tracking-[1px] bg-[#fff] sm:w-[fit-content] rounded block py-[0.56rem] sm:py-[0.69rem]  border-t-2 border-l-2 border-b-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] ${pending && 'border-[#ed9043]'} placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black"
             />
             <button className={`bg-[#434bed] relative left-[-2px] rounded-r px-5 py-1 text-white uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`} onClick={handleResetButtonClick}>Reset</button>
           </div>

@@ -9,24 +9,22 @@ const ToDoList = ({ user, userId }) => {
 
   // Tasks array
   const [toDoList, setToDoList] = useState([]);
+  const [filteredToDoList, setFilteredToDoList] = useState([]);
   
   // Tasks loading state
   const [loading, setLoading] = useState(false);
 
-  // Request add status
+  // Request add states
   const [addSuccess, setAddSuccess] = useState(false);
   const [addFailure, setAddFailure] = useState(false);
   const [addErrorMessage, setAddErrorMessage] = useState('Registration failed');
   const [addPending, setAddPending] = useState(false);
 
-  // Request update status 
+  // Request update states 
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [updateFailure, setUpdateFailure] = useState(false);
   const [updateErrorMessage, setUpdateErrorMessage] = useState('Update failed');
   const [updatePending, setUpdatePending] = useState(false);
-
-  // State to track the sorting order
-  const [sortOrder, setSortOrder] = useState('unordered'); // 'asc' or 'desc'
 
   // Api request to FETCH ALL existing task
   const fetchToDoListItems = async () => {
@@ -43,37 +41,12 @@ const ToDoList = ({ user, userId }) => {
     }
   };
 
-  // Api request to FETCH ALL existing task
   useEffect(() => {
     // Fetch the to-do list when the component mounts
     fetchToDoListItems();
   }, [userId]);
 
   
-  // Function to handle the reorder button click
-  const handleReorderClick = () => {
-    const sortedList = [...toDoList];
-
-    // Sort the list based on priority
-    sortedList.sort((taskA, taskB) => {
-      if (sortOrder === 'asc') {
-        return taskA.priority.localeCompare(taskB.priority);
-      } else {
-        return taskB.priority.localeCompare(taskA.priority);
-      }
-    });
-
-    // Update the state with the sorted list
-    setToDoList(sortedList);
-
-    // Toggle the sortOrder for the next click
-    setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-  };
-  const handleResetButtonClick = () => {
-    setSearchQuery('');
-  };
-
-
   // Api request to ADD a new task
   const addTask = async (newTask) => {
     setAddPending(true)
@@ -106,17 +79,6 @@ const ToDoList = ({ user, userId }) => {
       setAddFailure(false)
       setAddPending(false)
   }, 2000); 
-  };
-
-  // Track the update form that is active
-  const [showUpdateForm, setShowUpdateForm] = useState('');
-  const showUpdateTaskForm = (taskId) => {
-    if(showUpdateForm === taskId) {
-      setShowUpdateForm('')
-    }
-      else {
-        setShowUpdateForm(taskId)
-    }
   };
 
   // Api request to UPDATE an existing task
@@ -153,6 +115,17 @@ const ToDoList = ({ user, userId }) => {
       setUpdatePending(false)
       fetchToDoListItems()
   }, 1000); 
+  };
+  
+  // Track the update form that is currently active
+  const [showUpdateForm, setShowUpdateForm] = useState('');
+  const showUpdateTaskForm = (taskId) => {
+    if(showUpdateForm === taskId) {
+      setShowUpdateForm('')
+    }
+      else {
+        setShowUpdateForm(taskId)
+    }
   };
 
   // Api request to DELETE an existing task
@@ -193,22 +166,6 @@ const ToDoList = ({ user, userId }) => {
     }
   };
 
-  // State for search query
-  const [searchQuery, setSearchQuery] = useState('');
-
-  // Filtered tasks based on search query
-  const filteredToDoList = toDoList.filter(
-    (task) =>
-      task.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      task.priorityLabel.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      task.tags?.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-  );
-
-  // Function to handle search input change
-  const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
   // Hide completed tasks 
   const [hideCompleted, setHideCompleted] = useState(false);
   const handleHideCompletedTasks = () => {
@@ -228,14 +185,13 @@ const ToDoList = ({ user, userId }) => {
         addErrorMessage={addErrorMessage}
       />
       <div className="flex flex-col sm:flex-row mb-6 items-center">
-        <Filters 
-            handleReorderClick={handleReorderClick} 
-            sortOrder={sortOrder} 
+          <Filters 
             hideCompleted={hideCompleted} 
             handleHideCompletedTasks={handleHideCompletedTasks} 
-            searchQuery={searchQuery} 
-            handleSearchInputChange={handleSearchInputChange} 
-            handleResetButtonClick={handleResetButtonClick}
+            toDoList={toDoList}
+            filteredToDoList={filteredToDoList}
+            setFilteredToDoList={setFilteredToDoList}
+            setToDoList={setToDoList}
           />
           <Stats 
             toDoList={toDoList}
