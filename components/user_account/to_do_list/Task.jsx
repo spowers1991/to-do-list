@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import UpdateTaskForm from './UpdateTaskForm'
 
 const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSuccess, updateFailure, updatePending, updateErrorMessage, showUpdateForm, showUpdateTaskForm, hideCompleted }) => {
@@ -26,11 +26,20 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
   };
 
   // Accordion COLLAPSE tasks 
-  const [collapseAccordion, SetCollapseAccordion] = useState(true);
+  const [collapseAccordion, setCollapseAccordion] = useState(true);
   const handleCollapseAccordion = () => {
-    SetCollapseAccordion((prevValue) => !prevValue);
+    setCollapseAccordion((prevValue) => !prevValue);
   };
-  
+
+  // useEffect to set collapseAccordion when the component mounts
+  useEffect(() => {
+    // Set collapseAccordion to false if showUpdateForm is equal to task._id
+    if (showUpdateForm === task._id) {
+      setCollapseAccordion(false);
+    }
+  }, [showUpdateForm, task._id]);
+
+
   return (
     <li className={`font-inter flex flex-col gap-x-3  border-b ${task.completionStatus && 'border-[#43ed90]'} ${(hideCompleted && task.completionStatus)&& 'hidden'}`}>
       <div className="flex flex-col sm:flex-row w-full gap-3">
