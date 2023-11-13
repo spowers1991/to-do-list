@@ -44,7 +44,7 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
     <li className={`font-inter flex flex-col gap-x-3  border-b ${task.completionStatus && 'border-[#43ed90]'} ${(hideCompleted && task.completionStatus)&& 'hidden'}`}>
       <div className="flex flex-col sm:flex-row w-full gap-3">
         <div className='flex flex-col w-full'>
-        <span className='flex items-center'>
+        <span className='flex items-center gap-x-4 lg:gap-x-0'>
           <span onClick={() => handleCollapseAccordion()} className={`cursor-pointer  py-8 flex flex-wrap gap-3 lg:gap-0 w-full gap-x-5 items-center capitalize-first font-bold min-w-[80px] text-lg sm:text-xl `}>
             <span className={`${task.completionStatus && 'line-through'}`}>
               {task.name}
@@ -91,7 +91,7 @@ const Task = ({ task, deleteTask, updateTask, changeCompletionStatus, updateSucc
             {task.completionStatus ? 'Completed' : 'In progress'}
           </span>
         </span>
-          <button type="button" onClick={() => showUpdateTaskForm(task._id)} className={`${task.completionStatus && 'pointer-events-none bg-[#43ed90] line-through'} my-8 w-[fit-content] flex items-center gap-x-3 bg-[#434bed]  text-white duration-150 py-[12px] sm:py-[12px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
+          <button type="button" onClick={() => showUpdateTaskForm(task._id)} className={`${task.completionStatus && 'pointer-events-none bg-[#43ed90] line-through'} my-8 w-[fit-content] flex items-center gap-x-3 bg-[#434bed]  text-white duration-150 py-[13px] sm:py-[12px] px-5 rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px]`}>
               <div className='w-[fit-content] flex items-center gap-3 sm:gap-x-4'>
               {(showUpdateForm === task._id && !task.completionStatus)
                 ? 'Hide form'
