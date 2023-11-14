@@ -5,7 +5,7 @@ const AddNewTaskForm = ({ addTask, addSuccess, addFailure, addPending, addErrorM
   // State for form input field
   const [name, setname] = useState('');
   const [priority, setPriority] = useState('2');
-  const [priorityLabel, setPriorityLabel] = useState('medium'); // Default priority label
+  const [priorityLabel, setPriorityLabel] = useState('Medium'); // Default priority label
   const [tagsInput, setTagsInput] = useState(''); // Input for adding new tags
   const [tags, setTags] = useState([]); // Array to store multiple tags
 
