@@ -199,9 +199,9 @@ const ToDoList = ({ user, userId }) => {
       </div>
       {!loading ?
         <ul className='flex flex-col'>
-          {filteredToDoList && filteredToDoList.map((task, index) => (
+          {filteredToDoList && filteredToDoList.map((task) => (
             <Task
-              key={index}
+              key={task._id}
               task={task}
               userId={userId}
               updateTask={updateTask}
