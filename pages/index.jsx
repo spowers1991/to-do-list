@@ -37,6 +37,7 @@ const HomePage = () => {
                 <li>Generate task pages that are unique to each userId based on their tasks array</li>
                 <li>Add sub tasks for each task</li>
                 <li>Add a projects array</li>
+                <li>Drag and drop task ordering</li>
             </ul>
         </div> 
     )
