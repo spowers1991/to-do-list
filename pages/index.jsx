@@ -28,7 +28,7 @@ const HomePage = () => {
                <li>Search for tasks based on name and tag names</li>
                <li>Total tasks compared to completed tasks</li>
                <li>Show/hide completed tasks</li>
-               <li>Collapse tasks for organisation</li>
+               <li>Collapse tasks as accordion items</li>
                <li>Mobile responsive</li>
             </ul>
 
