@@ -22,12 +22,12 @@ const HomePage = () => {
                <li>Edit tasks</li>
                <li>Delete tasks</li>
                <li>Set tasks priority</li>
-               <li>Add searchable tags for each task</li>
-               <li>Task completion</li>
+               <li>Add tags to tasks</li>
+               <li>Task completion status</li>
                <li>Order tasks by priority</li>
                <li>Search for tasks based on name and tag names</li>
                <li>Total tasks compared to completed tasks</li>
-               <li>Toggle to hide competed tasks</li>
+               <li>Show/hide completed tasks</li>
                <li>Collapse tasks for organisation</li>
                <li>Mobile responsive</li>
             </ul>
