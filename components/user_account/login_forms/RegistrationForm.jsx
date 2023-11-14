@@ -19,6 +19,8 @@ const RegistrationForm = () => {
                 <input className={`bg-[#fff]  rounded block w-full my-8 p-2  border-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] ${pending && 'border-[#ed9043]'} ${submissionSuccess && '!border-[#43ed90]'} ${submissionFailure && '!border-[red]'} placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black`} type="text" id="username" name="username" placeholder='Username' required />
                 <input className={`bg-[#fff]  rounded block w-full my-8 p-2  border-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] ${pending && 'border-[#ed9043]'} ${submissionSuccess && '!border-[#43ed90]'} ${submissionFailure && '!border-[red]'} placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black`} type="text" id="email" name="email" placeholder='Email' required />
                 <input className={`bg-[#fff]  rounded block w-full my-8 p-2  border-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] ${pending && 'border-[#ed9043]'} ${submissionSuccess && '!border-[#43ed90]'} ${submissionFailure && '!border-[red]'} placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black`} type="password" id="password" name="password" placeholder='Chosen password' required />
+                <input className={`bg-[#fff] rounded block w-full my-8 p-2 border-2 focus:border-[#434bed] hover:border-[#434bed] border-solid focus:border-solid placeholder-shown:border-[#434bed] border-[#434bed] ${pending && 'border-[#ed9043]'} ${submissionSuccess && '!border-[#43ed90]'} ${submissionFailure && '!border-[red]'} placeholder-shown:border-dashed focus:outline-none focus:placeholder:text-black`} type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required
+                />
                 <button className={`flex gap-x-3 items-center submit-button ${submissionSuccess ? '!bg-[#43ed90] !text-[#000] pointer-events-none' : 'bg-[#434bed]'} ${submissionFailure ? 'bg-[red] pointer-events-none' : 'bg-[#434bed]'} ${pending && 'bg-[#ed9043] hover:bg-[#ed9043] '} duration-150 py-3 px-5 text-white rounded uppercase text-[11px] sm:text-xs font-[500] tracking-[1px] text-center" type="submit`}>
                     {!submissionSuccess && !submissionFailure ?
                     pending ?
@@ -66,6 +68,22 @@ const RegistrationForm = () => {
          }, {});
 
         setPending(true); // Set loading to true when the form is being submitted
+
+        const password = formData.password;
+        const confirmPassword = formData.confirmPassword;
+
+        if (password !== confirmPassword) {
+            // Password and confirmation do not match
+            setSubmissionFailure(true);
+            setSubmissionSuccess(false);
+            setErrorMessage('Password and confirmation do not match');
+            setTimeout(() => {
+                setSubmissionFailure(false)
+                setSubmissionSuccess(false)
+                setPending(false);
+            }, 2000); 
+            return;
+        }
         
         const response = await fetch('/api/authentication/register', {
             method: 'POST',
