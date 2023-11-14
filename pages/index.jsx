@@ -7,7 +7,7 @@ const HomePage = () => {
                 Hello
             </Heading>
             <p className='text-lg'>
-                Please <span className='underline'>register</span> with your own credentials and then login to access the to-do-list..
+                Please register with your own credentials and then login to access the to-do-list..
             </p>
             <ul className='text-lg mt-3 list-disc  list-inside'>
                <li>Next.js</li>
