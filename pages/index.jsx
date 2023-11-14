@@ -2,8 +2,8 @@ import Heading from '@/components/html_tags/Heading'
 
 const HomePage = () => {
     return (
-        <div className="font-inter container mx-auto px-6 py-16 md:py-28"> 
-            <Heading size="h1">
+        <div className="font-inter container mx-auto px-6 py-8 md:py-16"> 
+            <Heading size="h1" className="!mb-12">
                 Hello
             </Heading>
             <p className='text-lg'>
